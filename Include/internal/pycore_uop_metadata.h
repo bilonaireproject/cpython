@@ -274,6 +274,7 @@ const uint16_t _PyUop_Flags[MAX_UOP_ID+1] = {
     [_INTERNAL_INCREMENT_OPT_COUNTER] = 0,
     [_DYNAMIC_EXIT] = HAS_ESCAPES_FLAG,
     [_START_EXECUTOR] = 0,
+    [_SET_EXECUTOR_RUN_STATE] = 0,
     [_FATAL_ERROR] = 0,
     [_CHECK_VALIDITY_AND_SET_IP] = HAS_DEOPT_FLAG,
     [_DEOPT] = 0,
@@ -504,6 +505,7 @@ const char *const _PyOpcode_uop_name[MAX_UOP_ID+1] = {
     [_SEND_GEN_FRAME] = "_SEND_GEN_FRAME",
     [_SETUP_ANNOTATIONS] = "_SETUP_ANNOTATIONS",
     [_SET_ADD] = "_SET_ADD",
+    [_SET_EXECUTOR_RUN_STATE] = "_SET_EXECUTOR_RUN_STATE",
     [_SET_FUNCTION_ATTRIBUTE] = "_SET_FUNCTION_ATTRIBUTE",
     [_SET_IP] = "_SET_IP",
     [_SET_UPDATE] = "_SET_UPDATE",
@@ -1061,6 +1063,8 @@ int _PyUop_num_popped(int opcode, int oparg)
         case _DYNAMIC_EXIT:
             return 0;
         case _START_EXECUTOR:
+            return 0;
+        case _SET_EXECUTOR_RUN_STATE:
             return 0;
         case _FATAL_ERROR:
             return 0;

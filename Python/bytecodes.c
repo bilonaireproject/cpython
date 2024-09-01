@@ -4844,6 +4844,10 @@ dummy_func(
             assert(((_PyExecutorObject *)executor)->vm_data.valid);
         }
 
+        tier2 op(_SET_EXECUTOR_RUN_STATE, (--)) {
+            current_executor->vm_data.was_run = 1;
+        }
+
         tier2 op(_FATAL_ERROR, (--)) {
             assert(0);
             Py_FatalError("Fatal error uop executed.");
